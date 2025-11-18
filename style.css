@@ -121,6 +121,8 @@ code {
   gap: 1.25rem;
   padding: 1.5rem;
   min-height: calc(100vh - 160px);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .scene-panel {
@@ -130,6 +132,10 @@ code {
   border-radius: 1.25rem;
   padding: 1rem;
   box-shadow: var(--shadow);
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  position: relative;
+  z-index: 5;
 }
 
 .panel-heading {
@@ -194,6 +200,8 @@ code {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .viewer-meta {
@@ -211,10 +219,13 @@ code {
 
 #pano {
   flex: 1;
-  min-height: 420px;
+  width: 100%;
+  min-height: 360px;
+  height: clamp(320px, 62vh, 720px);
   border-radius: 1rem;
   background: #000;
   overflow: hidden;
+  position: relative;
 }
 
 .viewer-controls {
@@ -256,6 +267,8 @@ code {
 .floor-layout,
 .directory-layout {
   padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .floor-panel,
@@ -265,6 +278,8 @@ code {
   border: 1px solid var(--border);
   padding: 1.5rem;
   box-shadow: var(--shadow);
+  width: 100%;
+  margin: 0 auto;
 }
 
 .floor-panel h1,
@@ -278,6 +293,8 @@ code {
   border-radius: 1.3rem;
   border: 1px solid var(--border);
   padding: 1rem;
+  max-height: 70vh;
+  overflow: hidden;
 }
 
 [data-floor-plan] {
@@ -419,22 +436,27 @@ code {
     padding: 1rem;
   }
 
-  .scene-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 85%;
-    max-width: 360px;
-    transform: translateX(-105%);
-    transition: transform 0.25s ease;
-    border-radius: 0;
-    z-index: 30;
-  }
+.scene-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 85%;
+  max-width: 360px;
+  transform: translateX(-105%);
+  transition: transform 0.25s ease;
+  border-radius: 0;
+  z-index: 30;
+  max-height: 100vh;
+}
 
-  body.panel-open .scene-panel {
-    transform: translateX(0);
-  }
+body.panel-open .scene-panel {
+  transform: translateX(0);
+}
+
+.panel-heading {
+  align-items: center;
+}
 
   .panel-close {
     display: inline-flex;
@@ -442,7 +464,41 @@ code {
 
   #pano {
     min-height: 300px;
+    height: 55vh;
   }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .pano-layout,
+  .floor-layout,
+  .directory-layout {
+    padding: 1rem;
+  }
+
+  .directory-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.panel-open {
+  overflow: hidden;
+}
+
+body.panel-open::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 25;
 }
 
 @media (prefers-reduced-motion: reduce) {

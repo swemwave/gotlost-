@@ -459,14 +459,54 @@ function zoneColor(zone) {
 function setupFullscreenButtons() {
   const buttons = document.querySelectorAll('[data-action="fullscreen"]');
   if (!buttons.length) return;
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const sf = window.screenfull;
-      if (sf && sf.isEnabled) {
-        sf.toggle(document.documentElement);
-      } else if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      }
+  const sf = window.screenfull;
+  const targets = new Map();
+
+  const isFullscreenFor = target => {
+    if (sf && sf.isEnabled) {
+      return sf.isFullscreen && sf.element === target;
+    }
+    return document.fullscreenElement === target;
+  };
+
+  const updateLabels = () => {
+    buttons.forEach(button => {
+      const target = targets.get(button);
+      const active = target && isFullscreenFor(target);
+      button.textContent = active ? 'Exit fullscreen' : 'Fullscreen';
     });
+  };
+
+  function toggleFullscreen(button) {
+    const target = targets.get(button);
+    if (!target) return;
+    if (sf && sf.isEnabled) {
+      if (sf.isFullscreen && sf.element === target) {
+        sf.exit();
+      } else {
+        sf.request(target);
+      }
+    } else if (target.requestFullscreen) {
+      if (document.fullscreenElement === target) {
+        document.exitFullscreen?.();
+      } else {
+        target.requestFullscreen();
+      }
+    }
+    setTimeout(updateLabels, 150);
+  }
+
+  buttons.forEach(button => {
+    const selector = button.getAttribute('data-fullscreen-target');
+    const target = selector ? document.querySelector(selector) : null;
+    targets.set(button, target || document.documentElement);
+    button.addEventListener('click', () => toggleFullscreen(button));
   });
+
+  if (sf && sf.isEnabled) {
+    sf.on('change', updateLabels);
+  } else {
+    document.addEventListener('fullscreenchange', updateLabels);
+  }
+  updateLabels();
 }
