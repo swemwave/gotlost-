@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAIT Navigator - Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="directory">
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <div>
+        <p class="eyebrow">SAIT Campus</p>
+        <strong>Navigator</strong>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Panorama</a>
+      <a href="floor-plan.html">Floor plan</a>
+      <a href="directory.html" aria-current="page">Directory</a>
+    </nav>
+    <button type="button" class="btn primary" data-action="fullscreen">Fullscreen</button>
+  </header>
+
+  <main class="directory-layout">
+    <section class="directory-panel">
+      <header>
+        <div>
+          <p class="eyebrow">All stops</p>
+          <h1>Scene directory</h1>
+          <p class="muted">Use search and filters to jump directly to any checkpoint, bridge, or classroom.</p>
+        </div>
+      </header>
+      <div class="directory-filters">
+        <label class="sr-only" for="directory-search">Search stops</label>
+        <input type="search" id="directory-search" placeholder="Search stop names" data-directory-search>
+        <div class="filter-bar" data-filter-bar></div>
+      </div>
+      <div class="directory-list" data-directory-list>
+        <p class="muted">Loading data...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Select any card to open it in the panorama page.</p>
+  </footer>
+
+  <script src="vendor/screenfull.min.js"></script>
+  <script src="vendor/marzipano.js"></script>
+  <script src="data.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

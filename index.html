@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAIT Navigator - Panorama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="pano">
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <div>
+        <p class="eyebrow">SAIT Campus</p>
+        <strong>Navigator</strong>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html" aria-current="page">Panorama</a>
+      <a href="floor-plan.html">Floor plan</a>
+      <a href="directory.html">Directory</a>
+    </nav>
+  </header>
+
+  <main class="pano-layout">
+    <aside class="scene-panel" data-scene-panel>
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">All scenes</p>
+          <h2>Jump anywhere</h2>
+        </div>
+        <button type="button" class="panel-close" data-toggle-panel>Close</button>
+      </div>
+      <label class="sr-only" for="scene-filter">Filter scenes</label>
+      <input type="search" id="scene-filter" placeholder="Search checkpoints, bridges, rooms" data-scene-filter>
+      <ul class="scene-list" data-scene-list>
+        <li>Loading list...</li>
+      </ul>
+    </aside>
+
+    <section class="viewer-shell">
+      <div class="viewer-meta">
+        <div>
+          <p class="eyebrow">Now viewing</p>
+          <h1 data-scene-name>Loading scene...</h1>
+        </div>
+        <div class="viewer-buttons">
+          <button type="button" class="btn ghost" data-toggle-panel>Scenes</button>
+          <button type="button" class="btn ghost" data-action="autorotate">Auto rotate</button>
+          <button type="button" class="btn primary" data-action="fullscreen">Fullscreen</button>
+        </div>
+      </div>
+      <div id="pano" aria-label="Panorama viewer"></div>
+      <div class="viewer-controls">
+        <button type="button" data-view="up">Up</button>
+        <button type="button" data-view="left">Left</button>
+        <button type="button" data-view="reset">Center</button>
+        <button type="button" data-view="right">Right</button>
+        <button type="button" data-view="down">Down</button>
+        <button type="button" data-view="zoom-in">Zoom +</button>
+        <button type="button" data-view="zoom-out">Zoom -</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Need a different angle? Open the floor plan or directory tabs anytime.</p>
+  </footer>
+
+  <script src="vendor/screenfull.min.js"></script>
+  <script src="vendor/marzipano.js"></script>
+  <script src="data.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

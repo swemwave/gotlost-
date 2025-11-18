@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAIT Navigator - Floor Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="floor">
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <div>
+        <p class="eyebrow">SAIT Campus</p>
+        <strong>Navigator</strong>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Panorama</a>
+      <a href="floor-plan.html" aria-current="page">Floor plan</a>
+      <a href="directory.html">Directory</a>
+    </nav>
+    <button type="button" class="btn primary" data-action="fullscreen">Fullscreen</button>
+  </header>
+
+  <main class="floor-layout">
+    <section class="floor-panel">
+      <header>
+        <div>
+          <p class="eyebrow">Dynamic map</p>
+          <h1>MB - MC - MD network</h1>
+          <p class="muted">Nodes and paths are generated directly from APP_DATA so every hotspot remains in sync.</p>
+        </div>
+      </header>
+      <div class="plan-board">
+        <svg data-floor-plan viewBox="0 0 600 600" role="img" aria-label="Interactive floor plan"></svg>
+      </div>
+      <div class="legend">
+        <span class="badge" data-zone="mb">MB</span>
+        <span class="badge" data-zone="mc">MC</span>
+        <span class="badge" data-zone="md">MD</span>
+        <span class="badge" data-zone="other">Other</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Tap any node to open it in the panorama page.</p>
+  </footer>
+
+  <script src="vendor/screenfull.min.js"></script>
+  <script src="vendor/marzipano.js"></script>
+  <script src="data.js"></script>
+  <script type="module" src="index.js"></script>
+</body>
+</html>
