@@ -38,7 +38,7 @@ app-files/
 ## Customization notes
 - The pano UI reads query parameters (`?scene=<id>`). Both the floor plan and directory link back to index with that query so you can deep link to a specific stop.
 - To tweak the pano styling, edit the `.viewer-*` sections in `style.css`. Hotspot buttons mimic the original Marzipano look.
-- Floor plan layout is controlled by `zoneRadius()` and `zoneColor()` inside `index.js`.
+- The floor plan now uses hotspot yaw bearings to orient corridors (see `computeLayout` + `zoneColor` in `index.js`) and also exposes a JSON export (`data-floor-json`) with coordinates + directional observations you can feed into scripts.
 - Directory filters live in `filterConfig` within `index.js`.
 
 ## Troubleshooting

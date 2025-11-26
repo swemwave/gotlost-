@@ -32,7 +32,7 @@
         <div>
           <p class="eyebrow">Dynamic map</p>
           <h1>MB - MC - MD network</h1>
-          <p class="muted">Nodes and paths are generated directly from APP_DATA so every hotspot remains in sync.</p>
+          <p class="muted">Two synced views: a human-friendly SVG map and a computer-friendly JSON graph generated directly from APP_DATA.</p>
         </div>
       </header>
       <div class="plan-board">
@@ -44,6 +44,26 @@
         <span class="badge" data-zone="md">MD</span>
         <span class="badge" data-zone="other">Other</span>
       </div>
+      <p class="muted plan-note">Layout uses hotspot bearings from the panoramas to keep corridor directions true to the photos.</p>
+      <section class="plan-data">
+        <div>
+          <h2>Computer-readable map</h2>
+          <p class="muted">Exported JSON with node ids, zones, coordinates, and undirected links you can feed into scripts.</p>
+          <div class="data-box">
+            <pre data-floor-json>Building graph...</pre>
+          </div>
+          <div class="plan-actions">
+            <button type="button" class="btn ghost" data-copy-graph>Copy JSON</button>
+          </div>
+        </div>
+        <div>
+          <h2>Quick stats</h2>
+          <p class="muted">Live counts that stay aligned with the data export.</p>
+          <div class="data-box" data-floor-stats>
+            <p class="muted">Loading stats...</p>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
 

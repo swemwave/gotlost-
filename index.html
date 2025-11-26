@@ -53,7 +53,50 @@
           <button type="button" class="btn primary" data-action="fullscreen" data-fullscreen-target="#pano">Fullscreen</button>
         </div>
       </div>
-      <div id="pano" aria-label="Panorama viewer"></div>
+      <section class="route-planner" aria-label="Routing panel">
+        <div class="route-header">
+          <div>
+            <p class="eyebrow">Routes</p>
+            <h2>First-person directions</h2>
+            <p class="muted">Pick a checkpoint and jump-step through every major stop like Street View.</p>
+          </div>
+          <button type="button" class="btn ghost" data-route-reset>Clear</button>
+        </div>
+        <div class="route-grid">
+          <label>
+            <span class="label">Start checkpoint</span>
+            <select data-route-start>
+              <option value="">Loading checkpoints...</option>
+            </select>
+          </label>
+          <button type="button" class="chip" data-route-use-current>Use current view</button>
+          <label>
+            <span class="label">Destination</span>
+            <select data-route-dest>
+              <option value="">Pick a destination</option>
+            </select>
+          </label>
+          <button type="button" class="chip" data-route-quick-major>Show all stops</button>
+        </div>
+        <div class="route-actions">
+          <button type="button" class="btn primary" data-route-plan>Plan route</button>
+          <button type="button" class="btn ghost" data-route-follow disabled>Follow in viewer</button>
+        </div>
+        <p class="muted" data-route-status>Choose a start and destination to get a hop-by-hop path.</p>
+        <ol class="route-steps" data-route-steps>
+          <li class="muted">Routing results will appear here.</li>
+        </ol>
+      </section>
+      <div class="viewer-stage">
+        <div id="pano" aria-label="Panorama viewer"></div>
+        <div class="route-hud" data-route-hud hidden>
+          <p class="eyebrow">Next</p>
+          <strong data-route-hud-target>Choose a route</strong>
+          <div class="route-hud-arrow" aria-hidden="true">
+            <span data-route-hud-arrow>➜</span>
+          </div>
+        </div>
+      </div>
       <div class="viewer-controls">
         <button type="button" data-view="up">Up</button>
         <button type="button" data-view="left">Left</button>
